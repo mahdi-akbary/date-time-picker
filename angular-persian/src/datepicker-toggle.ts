@@ -17,7 +17,7 @@ import {
 import {MdDatepicker} from './datepicker';
 import {MdDatepickerIntl} from './datepicker-intl';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs/internal/Subscription';
 
 
 @Component({

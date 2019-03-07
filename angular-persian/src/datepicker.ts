@@ -35,13 +35,13 @@ import {ComponentPortal} from '@angular/cdk/portal';
 import {Directionality} from '@angular/cdk/bidi';
 import {ESCAPE} from '@angular/cdk/keycodes';
 import {MdDatepickerInput} from './datepicker-input';
-import {Subscription} from 'rxjs/Subscription';
 import {createMissingDateImplError} from './datepicker-errors';
 import {MdCalendar} from './calendar';
 import {
     DateAdapter, MatDialog, MatDialogRef,
 } from '@angular/material';
-import {first} from 'rxjs/operator/first';
+import {Subscription} from 'rxjs/internal/Subscription';
+import {first} from 'rxjs/operators';
 
 
 /** Used to generate a unique ID for each datepicker instance. */
@@ -322,7 +322,7 @@ export class MdDatepicker<D> implements OnDestroy {
             componentRef.instance.datepicker = this as any;
 
             // Update the position once the calendar has rendered.
-            first.call(this._ngZone.onStable).subscribe(() => this._popupRef.updatePosition());
+            this._ngZone.onStable.pipe(first()).subscribe(() => this._popupRef.updatePosition());
         }
 
         this._popupRef.backdropClick().subscribe(() => this.close());

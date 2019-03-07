@@ -1,0 +1,105 @@
+@import '../style/elevation';
+
+$npa-mat-datepicker-calendar-padding: 8px;
+$npa-mat-datepicker-non-touch-calendar-cell-size: 40px;
+$npa-mat-datepicker-non-touch-calendar-width: $npa-mat-datepicker-non-touch-calendar-cell-size * 7 + $npa-mat-datepicker-calendar-padding * 2;
+// Based on the natural height of the calendar in a month with 6 rows of dates
+// (largest the calendar will get).
+$npa-mat-datepicker-non-touch-calendar-height: auto;
+
+// Ideally the calendar would have a constant aspect ratio, no matter its size, and we would base
+// these measurements off the aspect ratio. Unfortunately, the aspect ratio does change a little as
+// the calendar grows, since some of the elements have pixel-based sizes. These numbers have been
+// chosen to minimize extra whitespace at larger sizes, while still ensuring we won't need
+// scrollbars at smaller sizes.
+$npa-mat-datepicker-touch-landscape-width: 64vh;
+$npa-mat-datepicker-touch-landscape-height: 80vh;
+$npa-mat-datepicker-touch-portrait-width: 80vw;
+$npa-mat-datepicker-touch-portrait-height: 100vw;
+$npa-mat-datepicker-touch-min-width: 250px;
+$npa-mat-datepicker-touch-min-height: 312px;
+$npa-mat-datepicker-touch-max-width: 750px;
+$npa-mat-datepicker-touch-max-height: 788px;
+
+
+
+.gregorian {
+  npa-mat-calendar * {
+    .superSmall {
+      font-family: 'vazir', sans-serif !important;
+    }
+  }
+
+}
+
+.mat-calendar-table-header {
+  line-height: 14px;
+}
+
+.mlabel {
+  text-align: center;
+  margin-top: -40px;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.54);
+  line-height: 10px;
+  pointer-events: none;
+  span {
+    font-size: 10px;
+    color: #989898;
+    padding: 0 2px;
+  }
+}
+
+.mat-datepicker-content {
+  @include mat-elevation(8);
+  direction: rtl;
+  display: block;
+}
+
+npa-mat-locale-changer {
+  display: block;
+  & > * {
+    margin: 20px;
+  }
+  mat-button-toggle-group {
+    margin: 16px 16px 0;
+  }
+}
+
+.mat-calendar {
+  width: $npa-mat-datepicker-non-touch-calendar-width;
+  height: $npa-mat-datepicker-non-touch-calendar-height;
+}
+
+.mat-datepicker-content-touch {
+  @include mat-elevation(0);
+
+  display: block;
+  // make sure the dialog scrolls rather than being cropped on ludicrously small screens
+  overflow: auto;
+
+  // TODO(mmalerba): hack to offset the padding of the dialog. Can be removed when we switch away
+  // from using dialog.
+  margin: -24px;
+
+  .mat-calendar {
+    min-width: $npa-mat-datepicker-touch-min-width;
+    min-height: $npa-mat-datepicker-touch-min-height;
+    max-width: $npa-mat-datepicker-touch-max-width;
+    max-height: $npa-mat-datepicker-touch-max-height;
+  }
+}
+
+@media all and (orientation: landscape) {
+  .mat-datepicker-content-touch .mat-calendar {
+    width: $npa-mat-datepicker-touch-landscape-width;
+    height: $npa-mat-datepicker-touch-landscape-height;
+  }
+}
+
+@media all and (orientation: portrait) {
+  .mat-datepicker-content-touch .mat-calendar {
+    width: $npa-mat-datepicker-touch-portrait-width;
+    height: $npa-mat-datepicker-touch-portrait-height;
+  }
+}

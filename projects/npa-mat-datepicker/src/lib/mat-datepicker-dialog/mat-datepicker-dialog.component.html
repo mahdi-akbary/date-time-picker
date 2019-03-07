@@ -1,0 +1,14 @@
+<npa-mat-locale-changer>miladi</npa-mat-locale-changer>
+<npa-mat-calendar cdkTrapFocus
+             [id]="datepicker.id"
+             [type]="datepicker.type"
+             [startAt]="datepicker.startAt"
+             [startView]="datepicker.startView"
+             [minDate]="datepicker._minDate"
+             [maxDate]="datepicker._maxDate"
+             [dateFilter]="datepicker._dateFilter"
+             [selected]="datepicker._selected"
+             [subed]="datepicker.subed"
+             (selectedChange)="datepicker._select($event)"
+             (userSelection)="datepicker.close()">
+</npa-mat-calendar>

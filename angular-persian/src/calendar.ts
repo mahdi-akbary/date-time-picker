@@ -24,14 +24,13 @@ import {
 
 import {MdDatepickerIntl} from './datepicker-intl';
 import {createMissingDateImplError} from './datepicker-errors';
-import {Subscription} from 'rxjs/Subscription';
 import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material';
 import {DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, RIGHT_ARROW, UP_ARROW} from '@angular/cdk/keycodes';
 import {PAGE_UP} from '@angular/cdk/keycodes';
 import {ENTER} from '@angular/cdk/keycodes';
-import {first} from 'rxjs/operator/first';
-import 'rxjs/add/operator/merge';
-
+import {first} from 'rxjs/operators';
+import {Subscription} from 'rxjs/internal/Subscription';
+import { merge } from 'rxjs';
 
 /**
  * A calendar that is used as part of the datepicker.
@@ -145,7 +144,7 @@ export class MdCalendar<D> implements AfterContentInit, OnDestroy {
         if (!this._dateFormats) {
             throw createMissingDateImplError('MD_DATE_FORMATS');
         }
-        this._intlChanges = _intl.changes.merge(this._dateFormats._getChanges).subscribe(() => {
+        this._intlChanges = merge(_intl.changes, this._dateFormats._getChanges).subscribe(() => {
             changeDetectorRef.markForCheck();
         });
         this._dateAdapterr = (_dateAdapter as any);
@@ -158,24 +157,24 @@ export class MdCalendar<D> implements AfterContentInit, OnDestroy {
         //fill year drop
         // main page
         if (this.minDate && this.maxDate) {
-            this.foods = Array.from({length: 100}, (v, k) => 10 - k)
+            this.foods = Array.from({length: 100}, (v, k) => 10 - k);
         } else if (this.minDate && !this.maxDate) {
-            this.foods = Array.from({length: 100}, (v, k) => 10 - k)
+            this.foods = Array.from({length: 100}, (v, k) => 10 - k);
         } else if (this.maxDate && !this.minDate) {
-            this.foods = Array.from({length: 100}, (v, k) => 10 - k)
+            this.foods = Array.from({length: 100}, (v, k) => 10 - k);
         }
         //for old dates like birthday
         else {
-            this.foods = Array.from({length: 100}, (v, k) => 10 - k)
+            this.foods = Array.from({length: 100}, (v, k) => 10 - k);
         }
     }
 
     _showDropYear(v) {
-        return this._dateAdapter.getYear(this._dateAdapter.addCalendarYears((this.startAt || new Date() as any), v))
+        return this._dateAdapter.getYear(this._dateAdapter.addCalendarYears((this.startAt || new Date() as any), v));
     }
 
     _showDropMonth(v) {
-        return this._dateAdapter.getMonthNames("long")[v]
+        return this._dateAdapter.getMonthNames('long')[v];
     }
 
     _yearSelected(v) {
@@ -250,7 +249,7 @@ export class MdCalendar<D> implements AfterContentInit, OnDestroy {
 
     /** Focuses the active cell after the microtask queue is empty. */
     _focusActiveCell() {
-        this._ngZone.runOutsideAngular(() => first.call(this._ngZone.onStable).subscribe(() => {
+        this._ngZone.runOutsideAngular(() => this._ngZone.onStable.pipe(first()).subscribe(() => {
             this._elementRef.nativeElement.querySelector('.mat-calendar-body-active').focus();
         }));
     }

@@ -18,7 +18,21 @@
       "dom"
     ],
     "paths": {
-      "@angular-persian/material-date-picker": [ "dist/material-date-picker" ]
+      "@angular-persian/material-date-picker": [
+        "dist/material-date-picker"
+      ],
+      "npa-mat-date-picker": [
+        "dist/npa-mat-date-picker"
+      ],
+      "npa-mat-date-picker/*": [
+        "dist/npa-mat-date-picker/*"
+      ],
+      "npa-mat-datepicker": [
+        "dist/npa-mat-datepicker"
+      ],
+      "npa-mat-datepicker/*": [
+        "dist/npa-mat-datepicker/*"
+      ]
     }
   },
   "exclude": [

@@ -1,0 +1,288 @@
+@import '../assets/style/layout-common';
+
+$mat-calendar-padding: 8px !default;
+$mat-calendar-header-divider-width: 1px !default;
+$mat-calendar-controls-vertical-padding: 5%;
+// We use the same padding as the month / year label, but subtract 16px since there is padding
+// between the edge of the button and the text. This ensures that the button text lines up with
+// the month / year label text.
+$mat-calendar-controls-side-margin: calc(33% / 7 - 16px);
+
+$mat-calendar-arrow-size: 5px !default;
+$mat-calendar-arrow-disabled-opacity: 0.5 !default;
+
+// Values chosen to approximate https://material.io/icons/#ic_navigate_before and
+// https://material.io/icons/#ic_navigate_next as closely as possible.
+$mat-calendar-prev-next-icon-border-width: 2px;
+$mat-calendar-prev-next-icon-margin: 15.5px;
+$mat-calendar-prev-icon-transform: translateX(2px) rotate(-45deg);
+$mat-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
+
+.mat-calendar {
+  display: block;
+}
+
+.mat-calendar-header {
+  padding: $mat-calendar-padding $mat-calendar-padding 0 $mat-calendar-padding;
+  padding: 16px;
+}
+
+.mat-calendar-content {
+  margin: 0;
+  padding: 0 $mat-calendar-padding $mat-calendar-padding $mat-calendar-padding;
+  outline: none;
+}
+
+.mat-calendar-controls {
+  display: flex;
+  margin: $mat-calendar-controls-vertical-padding $mat-calendar-controls-side-margin;
+  margin: 0;
+}
+
+npa-mat-locale-changer {
+  .mat-button-toggle-checked {
+    //background: mat-color($primary);
+  }
+}
+
+.mat-calendar-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-calendar-period-button {
+  min-width: 0;
+
+  &:hover {
+    .mat-button-focus-overlay {
+      opacity: 0;
+    }
+  }
+}
+.subed {
+  background: #ffd2de;
+}
+.calendar-drops {
+  position: absolute;
+  top: 12px;
+  left: 26px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  .mat-select-value {
+    text-align: left;
+  }
+}
+
+.drops-panels {
+  &.months {
+    .mat-select-panel {
+      width: 70px;
+    }
+  }
+  .mat-select-panel {
+    width: 50px;
+  }
+  .mat-option-text {
+    font-size: 13px;
+  }
+}
+
+.mat-calendar-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: $mat-calendar-arrow-size solid transparent;
+  border-right: $mat-calendar-arrow-size solid transparent;
+  border-top-width: $mat-calendar-arrow-size;
+  border-top-style: solid;
+  margin: 0 !important;
+  vertical-align: middle;
+
+  &.mat-calendar-invert {
+    transform: rotate(180deg);
+  }
+
+  [dir='rtl'] & {
+    margin: 0 $mat-calendar-arrow-size 0 0;
+  }
+}
+
+.mat-calendar-previous-button,
+.mat-calendar-next-button {
+  position: relative;
+
+  &::after {
+    @include mat-fill;
+    content: '';
+    margin: $mat-calendar-prev-next-icon-margin;
+    border: 0 solid currentColor;
+    border-top-width: $mat-calendar-prev-next-icon-border-width;
+  }
+
+  [dir='rtl'] & {
+    transform: rotate(180deg);
+  }
+}
+
+.mat-calendar-previous-button::after {
+  border-left-width: $mat-calendar-prev-next-icon-border-width;
+  transform: $mat-calendar-prev-icon-transform scale(-1);
+}
+
+.mat-calendar-next-button::after {
+  border-right-width: $mat-calendar-prev-next-icon-border-width;
+  transform: $mat-calendar-next-icon-transform scale(-1);
+}
+
+.mat-calendar-table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.mat-calendar-table-header th {
+  text-align: center;
+  padding: 0 0 $mat-calendar-padding 0;
+}
+
+.mat-calendar-table-header-divider {
+  position: relative;
+  height: $mat-calendar-header-divider-width;
+
+  // We use an absolutely positioned pseudo-element as the divider line for the table header so we
+  // can extend it all the way to the edge of the calendar.
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -$mat-calendar-padding;
+    right: -$mat-calendar-padding;
+    height: $mat-calendar-header-divider-width;
+  }
+}
+
+
+
+
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-pink, A700, 100, 400);
+$accent: mat-palette($mat-pink, 300, A100, A400);
+$warn: mat-palette($mat-red, A700);
+$theme: mat-light-theme($primary, $accent, $warn);
+//@include angular-material-theme($theme);
+//
+$custom-typography: mat-typography-config(
+        $font-family: 'vazir',
+        $headline: mat-typography-level(22px, 44px, 700),
+        $body-1: mat-typography-level(13px, 20px, 500)
+);
+@include mat-core($custom-typography);
+
+@include angular-material-theme($theme);
+
+
+
+@font-face {
+  font-family: "vazir-code";
+  src: url('/assets/fonts/vazir-code/Vazir-Code.woff') format("woff"),
+  url('/assets/fonts/vazir-code/Vazir-Code.eot') format("eot"),
+  url('/assets/fonts/vazir-code/Vazir-Code.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: "yekan2";
+  src: url('/assets/fonts/yekan/Yekan.eot?#iefix') format("embedded-opentype"), url("/assets/fonts/yekan/Yekan.woff") format("woff"), url('/assets/fonts/yekan/Yekan.ttf') format("truetype"), url("/assets/fonts/yekan/Yekan.svg#BYekan") format("svg");
+}
+
+@font-face {
+  font-family: "vazir-light";
+  src: url('/assets/fonts/vazir/Vazir-Light-FD.eot?#iefix') format("embedded-opentype"), url("/assets/fonts/vazir/Vazir-Light-FD.woff") format("woff"), url('/assets/fonts/vazir/Vazir-Light-FD.ttf') format("truetype"), url("/assets/fonts/vazir/Vazir-Light-FD.svg") format("svg");
+}
+
+@font-face {
+  font-family: "vazir-medium";
+  src: url('/assets/fonts/vazir/Vazir-Medium-FD.eot?#iefix') format("embedded-opentype"), url("/assets/fonts/vazir/Vazir-Medium-FD.woff") format("woff"), url('/assets/fonts/vazir/Vazir-Medium-FD.ttf') format("truetype"), url("/assets/fonts/vazir/Vazir-Medium-FD.svg") format("svg");
+}
+
+@font-face {
+  font-family: "vazir";
+  font-weight: normal;
+  src: url('/assets/fonts/vazir/Vazir-FD.eot?#iefix') format("embedded-opentype"), url("/assets/fonts/vazir/Vazir-FD.woff") format("woff"), url('/assets/fonts/vazir/Vazir-FD.ttf') format("truetype"), url("/assets/fonts/vazir/Vazir-FD.svg") format("svg");
+}
+
+@font-face {
+  font-family: "vazir";
+  font-weight: bold;
+  src: url('/assets/fonts/vazir/Vazir-Bold-FD.eot?#iefix') format("embedded-opentype"), url("/assets/fonts/vazir/Vazir-Bold-FD.woff") format("woff"), url('/assets/fonts/vazir/Vazir-Bold-FD.ttf') format("truetype"), url("/assets/fonts/vazir/Vazir-Bold-FD.svg") format("svg");
+}
+
+@font-face {
+  font-family: "fadigit";
+  src: url('/assets/fonts/fa-digits/Vazir-Code.woff') format("woff");
+}
+
+@font-face {
+  font-family: "barcode";
+  src: url('/assets/fonts/barcode/Code39.ttf') format("truetype");
+}
+html {
+  direction: rtl;
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  * {
+    font-family: 'vazir', sans-serif;
+  }
+  .mat-form-field-flex {
+    &:hover {
+      cursor: pointer;
+    }
+    input {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .mat-form-field-infix {
+      padding: 10px;
+    }
+  }
+  .centered {
+    margin: 30px auto 0;
+    display: block;
+    width: 200px;
+  }
+
+}
+
+span.love {
+  direction: ltr;
+  color: #666;
+  margin-top: 100px;
+  font-size: 12px;
+  display: block;
+  text-align: center;
+}
+span.love a {
+  color: #000000;
+  text-decoration: none;
+}
+span.love .fa {
+  color: #E90606;
+  margin: 0 3px;
+  font-size: 10px;
+  animation: pound 0.35s infinite alternate;
+  -webkit-animation: pound 0.35s infinite alternate;
+}
+
+@keyframes pound {
+  to {
+    transform: scale(2);
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

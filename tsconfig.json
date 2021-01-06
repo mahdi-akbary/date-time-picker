@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "downlevelIteration": true,
+    "module": "esnext",
     "outDir": "./dist/out-tsc",
     "baseUrl": "src",
     "sourceMap": true,
@@ -9,7 +11,10 @@
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2015",
+    "types": [
+      "src/typings.d.ts"
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -18,15 +23,6 @@
       "dom"
     ],
     "paths": {
-      "@angular-persian/material-date-picker": [
-        "dist/material-date-picker"
-      ],
-      "npa-mat-date-picker": [
-        "dist/npa-mat-date-picker"
-      ],
-      "npa-mat-date-picker/*": [
-        "dist/npa-mat-date-picker/*"
-      ],
       "npa-mat-datepicker": [
         "dist/npa-mat-datepicker"
       ],

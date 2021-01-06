@@ -1,26 +1,24 @@
-# Persian Jalali DatePicker for Angular Material
-[![TypeScript](https://badges.frapsoft.com/typescript/awesome/typescript-150x33.png?v=101)](https://github.com/ellerbrock/typescript-badges/)
-[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/)
-## Angular persian datepicker with awesome features!
+# NPA Material DatePicker for Angular Shamsi version
 
-[<img src="docs/assets/Capture.PNG">](https://kordeviant.github.io/mat-datepciker-module-persian/)
+## Angular Dari datepicker with awesome features!
 
-[Demo Website](https://kordeviant.github.io/mat-datepciker-module-persian/)
+This is a fork of @angular-persian/material-date-picker and I have upgrade it and it's angular decencies from 5.2.0 to 7.2.0 and the Persian month names to Dari names. link: https://github.com/kordeviant/mat-datepciker-module-persian
+# 
 ### Prerequisites
-you should have @angular/material, @angular/cdk and moment-jalaali installed to your app
+You should have @angular/material, @angular/cdk and moment-jalaali installed to your app
 
 ### Install
 ```bash
-npm i --save @angular-persian/material-date-picker
+npm i --save npa-mat-datepicker
 ```
 ### Add Module
 ```typescript
-import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker';
+import {NpaMatDatepickerModule} from 'npa-mat-datepicker';
 ```
 
 ### Example
 ```html
-<md-datepicker type="wide" #picker (selectedChanged)="setDateReturn($event);"></md-datepicker>
+<npa-mat-datepicker type="wide" #picker (selectedChanged)="setDateReturn($event);"></npa-mat-datepicker>
 <mat-form-field>
   <input required matInput (mouseup)="dpickerFocus(picker)" [(ngModel)]="today" (focus)="dpickerFocus(picker)" readonly
          [matDatepicker]="picker" placeholder="تاریخ">

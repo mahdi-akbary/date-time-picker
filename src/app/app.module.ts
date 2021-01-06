@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {DateTimePickerModule} from './date-time-picker/date-time-picker.module';
+import {DateTimePickerModule} from '../../dist/src/app/date-time-picker/date-time-picker.module';
 
 @NgModule({
   declarations: [

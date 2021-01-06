@@ -1,8 +1,8 @@
 {
-  "name": "ng-packaged",
+  "name": "date-time-picker",
   "version": "0.0.1",
-  "private": true,
-  "license": "MIT",
+  "private": false,
+  "license": "proprietary",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,8 @@
     "build:lib": "rimraf dist && ng-packagr -p angular-persian/package.json",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "packagr": "ng-packagr -p ng-package.json"
   },
   "dependencies": {
     "@angular/animations": "8.2.14",
@@ -52,7 +53,7 @@
     "karma-coverage-istanbul-reporter": "2.0.1",
     "karma-jasmine": "1.1.2",
     "karma-jasmine-html-reporter": "0.2.2",
-    "ng-packagr": "^5.4.0",
+    "ng-packagr": "^5.7.1",
     "protractor": "5.4.0",
     "rimraf": "2.6.3",
     "ts-node": "7.0.0",

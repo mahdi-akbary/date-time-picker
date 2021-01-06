@@ -1,0 +1,24 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "lib": {
+    "entryFile": "public-api.ts"
+  },
+  "whitelistedNonPeerDependencies": [
+    "lodash",
+    "@angular/animations",
+    "@angular/cdk",
+    "@angular/common",
+    "@angular/compiler",
+    "@angular/core",
+    "@angular/forms",
+    "@angular/forms",
+    "@angular/material",
+    "@angular/platform-browser",
+    "@angular/router",
+    "core-js",
+    "hammerjs",
+    "moment-jalaali",
+    "rxjs",
+    "zone.js"
+  ]
+}
